@@ -19,7 +19,7 @@ def setup_logging(config: dict):
     # Configure logging with rotation
     logging.basicConfig(
         level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
+        format="%(asctime)s | %(levelname)s | %(message)s",
         handlers=[
             RotatingFileHandler(
                 log_filepath, maxBytes=log_max_size, backupCount=backup_count

@@ -11,14 +11,6 @@ def run_command(command):
         )
         stdout, stderr = process.communicate()
 
-        if stdout:
-            for line in stdout.decode().splitlines():
-                logging.info(line.strip())
-
-        if stderr:
-            for line in stderr.decode().splitlines():
-                logging.error(line.strip())
-
         return stdout, stderr
     except Exception as e:
         logging.error(f"Error running command '{command}': {e}")
@@ -28,12 +20,19 @@ def run_command(command):
 def sync_files(source: str, destination: str, delete: bool = True):
     try:
         command = f"aws s3 sync {source} {destination}"
+
         if delete:
             command += " --delete"
         stdout, stderr = run_command(command)
+
+        # Log output from aws cli
         if stdout:
-            logging.info(stdout.decode().strip())
+            for line in stdout.decode().splitlines():
+                logging.info(line.strip())
+
         if stderr:
-            logging.error(stderr.decode().strip())
+            for line in stderr.decode().splitlines():
+                logging.error(line.strip())
+
     except Exception as e:
         logging.error(f"Error syncing from {source} to {destination}: {e}")

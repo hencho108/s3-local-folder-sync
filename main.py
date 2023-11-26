@@ -31,6 +31,7 @@ observer = Observer()
 observer.schedule(event_handler, path=local_folder, recursive=True)
 
 if __name__ == "__main__":
+    sync.sync_files(local_folder, s3_bucket, sync_deletions)
     try:
         logging.info("Monitoring for changes. Press Ctrl+C to stop.")
         observer.start()
