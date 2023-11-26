@@ -1,0 +1,13 @@
+general:
+  local_folder: "~/SecondBrain"
+  s3_bucket: "s3://hendriks-second-brain"
+
+sync:
+  s3_to_local_sync_interval: 300 # In seconds
+  sync_deletions: true
+
+logging:
+  log_directory: "~/logs/s3-local-folder-sync"
+  log_filename: "s3_local_folder_sync_log.log"
+  log_max_size: 10485760 # 10 MB in bytes
+  backup_count: 1
