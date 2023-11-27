@@ -18,6 +18,7 @@ def run_command(command):
 
 
 def sync_files(source: str, destination: str, delete: bool = True):
+    # TODO: don't sync while sync is in progress
     try:
         command = f"aws s3 sync {source} {destination}"
 
