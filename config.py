@@ -2,8 +2,10 @@ import os
 
 import yaml
 
+from utils import DotDict
 
-def load_config(file_path: str) -> dict:
+
+def load_config(file_path: str) -> DotDict:
     """Handles loading configuration from the YAML file."""
     with open(file_path, "r") as file:
         config = yaml.safe_load(file)
@@ -16,4 +18,4 @@ def load_config(file_path: str) -> dict:
         config["logging"]["log_directory"]
     )
 
-    return config
+    return DotDict(config)

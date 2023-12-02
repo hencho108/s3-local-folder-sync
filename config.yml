@@ -1,11 +1,10 @@
-# TODO: load config from ~/.config
 general:
-  local_folder: "~/SecondBrain"
-  s3_bucket: "s3://hendriks-second-brain"
-  aws_profile: default # TODO: build functionality
+  local_folder: "~/local-folder"
+  s3_bucket: "my-bucket"
+  aws_profile: default
 
 sync:
-  s3_to_local_sync_interval: 300 # In seconds
+  interval: 60 # In seconds
   sync_deletions: true
 
 logging:

@@ -2,15 +2,17 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
+from utils import DotDict
 
-def setup_logging(config: dict):
+
+def setup_logging(config: DotDict):
     """
     Handles the setup and configuration of the logging system
     """
-    log_directory = config["log_directory"]
-    log_filepath = os.path.join(log_directory, config["log_filename"])
-    log_max_size = config["log_max_size"]
-    backup_count = config["backup_count"]
+    log_directory = config.log_directory
+    log_filepath = os.path.join(log_directory, config.log_filename)
+    log_max_size = config.log_max_size
+    backup_count = config.backup_count
 
     # Ensure log directory exists
     if not os.path.exists(log_directory):
